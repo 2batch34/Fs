@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temple Darshan Booking</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        #booking-form {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #confirmation-status {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="booking-form">
+        <h1>Temple Darshan Booking</h1>
+        <form id="darshan-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Book Darshan</button>
+        </form>
+        <div id="confirmation-status"></div>
+    </div>
+
+    <script>
+   
+    document.getElementById('darshan-form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        // Simulate form submission logic
+        const { isBookingSuccessful, name } = await simulateBackendProcessing(); // Replace with your actual backend logic
+
+        // Update confirmation status
+        const confirmationStatus = document.getElementById('confirmation-status');
+        if (isBookingSuccessful) {
+            confirmationStatus.innerHTML = `Dear ${name}, your ticket is booked successfully!`;
+        } else {
+            confirmationStatus.innerHTML = 'Booking pending. Please try again later.';
+        }
+    });
+
+    // Simulate backend processing (replace this with your actual backend logic)
+    function simulateBackendProcessing() {
+        return new Promise(resolve => {
+            setTimeout(() => {
+                const isBookingSuccessful = Math.random() < 0.5; // Simulating success 50% of the time
+                const name = document.getElementById('name').value; // Get the name from the form
+                resolve({ isBookingSuccessful, name });
+            }, 1000); // Simulating a delay for backend processing
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

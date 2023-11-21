@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    body {
+    background-color: powderblue;
+    font-family: "Courier New", Courier, monospace;
+}
+
+#survey-container {
+    text-align: center;
+    margin: 50px;
+}
+
+#start-btn {
+    padding: 10px;
+}
+
+#question-container {
+    display: none;
+}
+
+#success-message {
+    display: none;
+    margin-top: 20px;
+}
+
+    </style>
+    <title>New Product Survey</title>
+</head>
+<body>
+
+<div id="survey-container">
+    <button id="start-btn" onclick="startSurvey()">Start Survey</button>
+
+    <div id="question-container" style="display: none;">
+        <h3>Survey Questions:</h3>
+        <ol>
+            <li>
+                <label for="q1">How satisfied are you with the new product?</label>
+                <br>
+                <input type="radio" name="q1" value="1" required> 1
+                <input type="radio" name="q1" value="2"> 2
+                <input type="radio" name="q1" value="3"> 3
+                <input type="radio" name="q1" value="4"> 4
+                <input type="radio" name="q1" value="5"> 5
+            </li>
+            <li><label for="q2"> What features do you like the most?</label> <input type="text" id="q2" required></li>
+            <li>
+                <label for="q3">How likely are you to recommend this product to others?</label>
+                <br>
+                <input type="radio" name="q3" value="1" required> 1
+                <input type="radio" name="q3" value="2"> 2
+                <input type="radio" name="q3" value="3"> 3
+                <input type="radio" name="q3" value="4"> 4
+                <input type="radio" name="q3" value="5"> 5
+            </li>
+            <li><label for="q4">Any suggestions for improvement?</label> <textarea id="q4" rows="4" required></textarea></li>
+            <li><label for="q5"> Overall feedback on the product?</label> <input type="text" id="q5" required></li>
+        </ol>
+        <button id="submit-btn" onclick="submitSurvey()">Submit Survey</button>
+    </div>
+
+    <div id="success-message" style="display: none;">
+        <p>Your survey has been submitted successfully to the company. Thank you!</p>
+    </div>
+</div>
+
+
+   <script>
+    function startSurvey() {
+        document.getElementById('start-btn').style.display = 'none';
+        document.getElementById('question-container').style.display = 'block';
+    }
+
+    function submitSurvey() {
+        // Validate if any radio button is selected
+        const radioInputs = document.querySelectorAll('input[type="radio"]');
+        let radioSelected = false;
+        radioInputs.forEach(input => {
+            if (input.checked) {
+                radioSelected = true;
+            }
+        });
+
+        // Validate if text areas and input fields are filled
+        const textInputs = document.querySelectorAll('input[type="text"], textarea');
+        let allFieldsFilled = true;
+        textInputs.forEach(input => {
+            if (input.value.trim() === '') {
+                allFieldsFilled = false;
+            }
+        });
+
+        // Show message if any validation fails
+        if (!radioSelected || !allFieldsFilled) {
+            alert('Please fill all fields before submitting the survey.');
+            return;
+        }
+
+        // Here you would typically handle the survey data submission to the server.
+        // For simplicity, let's just show the success message.
+        document.getElementById('question-container').style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
+    }
+</script>
+</body>
+</html>

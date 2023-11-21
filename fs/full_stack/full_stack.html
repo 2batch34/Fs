@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+  body{
+      background-color:powderblue;
+  }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+  <title>Full Stack Learning</title>
+</head>
+<body>
+  <div id="startButtonContainer">
+    <button id="startButton" onclick="showTopics()">Start Learning Full Stack</button>
+  </div>
+
+  <div id="topicsContainer" style="display: none;">
+    <button class="topicButton" onclick="showContent('Frontend')">Frontend Development</button>
+    <button class="topicButton" onclick="showContent('Backend')">Backend Development</button>
+    <button class="topicButton" onclick="showContent('Databases')">Databases</button>
+    <button class="topicButton" onclick="showContent('DatabaseManagement')">Database Management</button>
+    <button class="topicButton" onclick="showContent('APIs')">APIs</button>
+    <button class="topicButton" onclick="showContent('WebSecurity')">Web Security</button>
+    <button class="topicButton" onclick="showContent('WebServers')">Web Servers & Deployment</button>
+    <button class="topicButton" onclick="showContent('DevTools')">Development Tools</button>
+    <button class="topicButton" onclick="showContent('QuestionForum')">Question Forum</button>
+  </div>
+
+  <div id="contentContainer" style="display: none;">
+    <!-- Content for each topic will be displayed here -->
+  </div>
+
+  <script>
+    function showTopics() {
+      document.getElementById('startButtonContainer').style.display = 'none';
+      document.getElementById('topicsContainer').style.display = 'block';
+    }
+
+    function showContent(topic) {
+      // Hide all content containers
+      document.getElementById('contentContainer').innerHTML = '';
+      document.getElementById('contentContainer').style.display = 'block';
+
+      if (topic === 'Frontend') {
+        document.getElementById('contentContainer').innerHTML = '<h2>Frontend Development</h2>' +
+          '<p>Learning full stack development involves acquiring skills in both frontend and backend development. Here are the key divisions you should focus on:</p>' +
+          '<ul>' +
+          '<li><strong>HTML/CSS:</strong> Building the structure and styling of web pages.</li>' +
+          '<li><strong>JavaScript:</strong> Adding interactivity and dynamic content to websites.</li>' +
+          '<li><strong>Frontend Frameworks:</strong> Learning popular frameworks like React, Angular, or Vue.js.</li>' +
+          '</ul>';
+      } else if (topic === 'Backend') {
+        document.getElementById('contentContainer').innerHTML = '<h2>Backend Development</h2>' +
+          '<p>Learning full stack development involves acquiring skills in both frontend and backend development. Here are the key divisions you should focus on:</p>' +
+          '<ul>' +
+          '<li><strong>Server-Side Programming Language:</strong> Choose a language such as Node.js (JavaScript), Python (Django or Flask), Ruby (Ruby on Rails), Java (Spring), or PHP.</li>' +
+          '<li><strong>Databases:</strong> Understanding and working with databases like MySQL, PostgreSQL, MongoDB, or Firebase.</li>' +
+          '<li><strong>Server Environment:</strong> Setting up server environments and understanding server-side concepts.</li>' +
+          '</ul>';
+      } else if (topic === 'DevTools') {
+        document.getElementById('contentContainer').innerHTML = '<h2>Development Tools</h2>' +
+          '<p>Learning full stack development involves acquiring skills in both frontend and backend development. Here are the key divisions you should focus on:</p>' +
+          '<ul>' +
+          '<li><strong>Integrated Development Environments (IDEs):</strong> Using tools like Visual Studio Code or JetBrains IDEs.</li>' +
+          '<li><strong>Package Managers:</strong> Using npm (Node Package Manager) or others for package management.</li>' +
+          '</ul>';
+      } else if (topic === 'QuestionForum') {
+        document.getElementById('contentContainer').innerHTML = '<h2>Question Forum</h2>' +
+          '<p>Ask questions and get answers from the community:</p>' +
+          '<form id="questionForm">' +
+          '<label for="question">Ask a question:</label>' +
+          '<textarea id="question" name="question" rows="4" required></textarea>' +
+          '<button type="button" onclick="postQuestion()">Submit</button>' +
+          '</form>' +
+          '<div id="questionsList"></div>';
+      }
+    }
+
+    function postQuestion() {
+      const questionInput = document.getElementById('question');
+      const questionText = questionInput.value;
+
+      const questionsList = document.getElementById('questionsList');
+      const questionItem = document.createElement('div');
+      questionItem.innerHTML = `<p>${questionText}</p>` +
+        '<div>' +
+        '<label for="answer">Your Answer:</label>' +
+        '<textarea id="answer" rows="4" required></textarea>' +
+        '<button onclick="submitAnswer(this)">Submit Answer</button>' +
+        '<div class="answersList"></div>' +
+        '</div>';
+      questionsList.appendChild(questionItem);
+
+      // Clear the input
+      questionInput.value = '';
+    }
+
+    function submitAnswer(button) {
+      const answerInput = button.previousElementSibling;
+      const answerText = answerInput.value;
+
+      const answersList = button.nextElementSibling;
+      const answerItem = document.createElement('div');
+      answerItem.innerHTML = `<p>Answer: ${answerText}</p>`;
+      answersList.appendChild(answerItem);
+
+      // Clear the input
+      answerInput.value = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+Body {
+    Font-family: Arial, sans-serif;
+    Margin: 20px;
+}
+
+#app {
+    Max-width: 600px;
+    Margin: auto;
+}
+
+Select {
+    Padding: 5px;
+    Margin-top: 10px;
+}
+
+#result {
+    Margin-top: 20px;
+}
