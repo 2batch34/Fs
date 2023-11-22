@@ -1,3 +1,15 @@
+function calculateGrade() {
+    const marks = parseFloat(document.getElementById("marks").value);
+
+    if (isNaN(marks) || marks < 0 || marks > 100) {
+        displayResult("Invalid input. Enter a valid mark between 0 and 100.");
+    } else {
+        const grade = calculateLetterGrade(marks);
+        const percentage = calculatePercentage(marks);
+        displayResult(`Your grade is: ${grade} (${percentage}%)`);
+    }
+}
+
 function calculateLetterGrade(marks) {
     if (marks >= 90) {
         return "A";
@@ -24,3 +36,4 @@ function resetCalculator() {
     document.getElementById("marks").value = "";
     document.getElementById("result").innerText = "";
 }
+
