@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header, main, footer {
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        Th {
+            Background-color: #f2f2f2;
+        }
+
+        Button {
+            Padding: 10px;
+            Cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>School Management Dashboard</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Fees Payment Status</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Fee Amount</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>John Doe</td>
+                        <td>$500</td>
+                        <td>Paid</td>
+                        <td><button onclick="openPaymentGateway('001', 500)">Pay Now</button></td>
+                    </tr>
+                    <!—Add more rows for other students 
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2>Payment Gateway</h2>
+            <div id="payment-gateway">
+                <!—Display payment gateway information here 
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 School Management System</p>
+    </footer>
+
+    <script>
+        function openPaymentGateway(studentId, amount) {
+            // Simulate a payment gateway response
+            const paymentGatewayDiv = document.getElementById('payment-gateway');
+            paymentGatewayDiv.innerHTML = `
+                <p>Initiating payment for Student ID ${studentId}…</p>
+                <p>Amount: $${amount}</p>
+                <p>Payment Successful!</p>
+            `;
+        }
+    </script>
+</body>
+</html>
+

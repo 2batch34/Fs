@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+    <meta charset=”UTF-8”>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+    <title>Shop Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type=”radio”] {
+            margin-right: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="surveyForm">
+        <h2>Shop Survey</h2>
+
+        <label for="productQuality">1. Product Quality:</label>
+        <input type="radio" name="productQuality" value="excellent" required> Excellent
+        <input type="radio" name="productQuality" value="good"> Good
+        <input type="radio" name="productQuality" value="average"> Average
+        <input type="radio" name="productQuality" value="poor"> Poor
+
+        <label for=”customerService”>2. Customer Service:</label>
+        <input type="radio" name="customerService" value="excellent" required> Excellent
+        <input type="radio" name="customerService" value="good"> Good
+        <input type="radio" name="customerService" value="average"> Average
+        <input type="radio" name="customerService" value="poor"> Poor
+
+        <label for="affordability">3. Affordability of the Products:</label>
+        <input type="radio" name="affordability" value="excellent" required> Excellent
+        <input type="radio" name="affordability" value="good"> Good
+        <input type="radio" name="affordability" value="average"> Average
+        <input type="radio" name="affordability" value="poor"> Poor
+
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" rows="4" placeholder="Your comments…"></textarea>
+
+        <button type="button" onclick="submitSurvey()">Submit</button>
+
+        <div class="result" id="resultContainer"></div>
+    </form>
+
+    <script>
+        function submitSurvey() {
+            const formData = new FormData(document.getElementById('surveyForm'));
+            const resultContainer = document.getElementById('resultContainer');
+
+            let results = '<p><strong>Survey Results:</strong></p>';
+            formData.forEach((value, key) => {
+                results += `<p>${key}: ${value}</p>`;
+            });
+
+            resultContainer.innerHTML = results;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
